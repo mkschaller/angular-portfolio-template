@@ -1,5 +1,60 @@
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
-      <h1 class="display-4">{{ title }}</h1>
+      <h1 class="display-4">{{ pageTitle }}</h1>
     </div>
 </div>
+
+<section class="container">
+    <div class="row">
+        <div class="col-sm-6 col-md-9">
+            <h2>{{ pageTitle }}</h2>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae reiciendis tempora neque, saepe inventore iusto eligendi incidunt quaerat ab facilis harum quasi corporis officiis cumque a, vel laborum nemo error.</p>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae reiciendis tempora neque, saepe inventore iusto eligendi incidunt quaerat ab facilis harum quasi corporis officiis cumque a, vel laborum nemo error.</p>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae reiciendis tempora neque, saepe inventore iusto eligendi incidunt quaerat ab facilis harum quasi corporis officiis cumque a, vel laborum nemo error.</p>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae reiciendis tempora neque, saepe inventore iusto eligendi incidunt quaerat ab facilis harum quasi corporis officiis cumque a, vel laborum nemo error.</p>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae reiciendis tempora neque, saepe inventore iusto eligendi incidunt quaerat ab facilis harum quasi corporis officiis cumque a, vel laborum nemo error.</p>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <h2>Submit a Project</h2>
+
+            <form #form="ngForm" (ngSubmit)="addProject(form.value)">
+                <div class="form-group">
+                    <label for="name">Project Name</label>
+                    <input type="text" class="form-control" id="name" title="Project Name" name="name" placeholder="Project Name..." [(ngModel)]="name">
+                </div>
+                <div class="form-group">
+                    <label for="name">Project Image</label>
+                    <input type="text" class="form-control" id="image" title="Project Image" name="image" placeholder="Project Image URL..." [(ngModel)]="image">
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput2">Project Description</label>
+                    <textarea type="text" class="form-control" id="description" name="description" placeholder="Project description..." [(ngModel)]="description"></textarea>
+                </div>
+                <button id="btn" type="submit" class="btn btn-primary">Add Project</button>
+            </form>
+        </div>
+        <div class="col-12 mt-5">
+            <h2>Projects</h2>
+            <p id="results-label">{{ projects.length }} Results</p>
+
+            <section class="project-list row mt-4">
+
+                <div class="col-sm-6 col-md-4" *ngFor="let project of projects; let i = index">
+                    <div class="card">
+                        <img src="{{ project.image }}" class="card-img-top" alt="{{ project.name }}">
+                        <div class="card-body">
+                            <button type="button" class="close mx-right" data-dismiss="alert" aria-label="Close" (click)="removeProject(i)">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h5 class="card-title">{{ project.name }}</h5>
+                            <p class="card-text">{{ project.description }}</p>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+        </div>
+    </div>
+</section>
+
