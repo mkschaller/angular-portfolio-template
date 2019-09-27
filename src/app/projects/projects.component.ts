@@ -1,9 +1,25 @@
 import { Component, OnInit } from '@angular/core';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.scss']
+  styleUrls: ['./projects.component.scss'],
+  animations: [
+    trigger('projectsAnim', [
+      state('active', style({
+        opacity: '1'
+      })),
+      transition('void => *', [
+        style({transform: 'translateY(-20px)', opacity: '0'}),
+        animate('800ms ease-in-out')
+      ]),
+      transition('* => void', [
+        animate('800ms ease-in-out'),
+        style({transform: 'translateY(-20px)', opacity: '0'})
+      ])
+    ])
+  ]
 })
 export class ProjectsComponent implements OnInit {
 
@@ -22,6 +38,7 @@ export class ProjectsComponent implements OnInit {
   name = '';
   image = '';
   description = '';
+  state = 'active';
 
   addProject(value) {
     // Add to array

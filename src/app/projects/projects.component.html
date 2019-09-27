@@ -39,15 +39,15 @@
 
             <section class="project-list row mt-4">
 
-                <div class="col-sm-6 col-md-4" *ngFor="let project of projects; let i = index">
+                <div class="col-sm-6 col-md-4" *ngFor="let project of projects; let i = index" [@projectsAnim]="state">
                     <div class="card">
                         <img src="{{ project.image }}" class="card-img-top" alt="{{ project.name }}">
                         <div class="card-body">
-                            <button type="button" class="close mx-right" data-dismiss="alert" aria-label="Close" (click)="removeProject(i)">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
                             <h5 class="card-title">{{ project.name }}</h5>
                             <p class="card-text">{{ project.description }}</p>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-primary mx-auto" (click)="removeProject(i)">Remove</button>
                         </div>
                     </div>
                 </div>
