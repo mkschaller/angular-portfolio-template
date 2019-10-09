@@ -1,5 +1,15 @@
-<app-header></app-header>
+<mat-drawer-container class="container" autosize>
+    <mat-drawer #sidenav class="sidenav">
+        <app-header></app-header>
+    </mat-drawer>
+    <div class="sidenav-content">
+        <button mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
 
-<router-outlet></router-outlet>
+        <router-outlet></router-outlet>
+        
+        <app-footer></app-footer>
+    </div>
+</mat-drawer-container>
 
-<app-footer></app-footer>
