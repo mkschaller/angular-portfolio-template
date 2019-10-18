@@ -3,9 +3,22 @@
         <app-header></app-header>
     </mat-drawer>
     <div class="sidenav-content">
-        <button mat-icon-button (click)="sidenav.toggle()">
-            <mat-icon>menu</mat-icon>
-        </button>
+            <mat-toolbar color="primary">
+                    <mat-toolbar-row>
+                            <button mat-icon-button (click)="sidenav.toggle()">
+                                <mat-icon>menu</mat-icon>
+                            </button>
+                            <span>Title</span>
+                            <span class="spacer"></span>
+                            <button mat-icon-button><mat-icon>favorite</mat-icon></button>
+                            <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
+                            <mat-menu #menu="matMenu">
+                                <button mat-menu-item><mat-icon>publish</mat-icon> Share</button>
+                                <button mat-menu-item disabled><mat-icon>mode_comment</mat-icon> Comment</button>
+                                <button mat-menu-item><mat-icon>delete</mat-icon> Delete</button>
+                            </mat-menu>
+                    </mat-toolbar-row>
+                </mat-toolbar>
 
         <router-outlet></router-outlet>
         
